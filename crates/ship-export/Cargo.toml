@@ -12,3 +12,4 @@ ship-hull = { path = "../ship-hull" }
 serde = { workspace = true }
 serde_json = { workspace = true }
 thiserror = { workspace = true }
+gltf-json = "1.4"
