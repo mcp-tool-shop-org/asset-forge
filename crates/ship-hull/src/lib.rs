@@ -7,6 +7,7 @@ pub mod longitudinal;
 pub mod mesh;
 pub mod rail;
 pub mod rig;
+pub mod sails;
 pub mod section;
 pub mod station;
 pub mod superstructure;
