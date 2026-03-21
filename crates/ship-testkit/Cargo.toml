@@ -1,0 +1,11 @@
+[package]
+name = "ship-testkit"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Canonical fixtures, mesh invariants, and metrics for ship generator testing"
+
+[dependencies]
+ship-schema = { path = "../ship-schema" }
+ship-hull = { path = "../ship-hull" }

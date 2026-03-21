@@ -1,0 +1,11 @@
+[package]
+name = "ship-hull"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Station-based lofted hull generator with curve math and mesh building"
+
+[dependencies]
+ship-schema = { path = "../ship-schema" }
+thiserror = { workspace = true }
