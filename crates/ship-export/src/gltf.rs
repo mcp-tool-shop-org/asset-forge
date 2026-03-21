@@ -58,17 +58,7 @@ pub fn export_glb(
 }
 
 fn collect_meshes(result: &HullResult) -> Vec<&MeshData> {
-    let mut meshes: Vec<&MeshData> = Vec::new();
-    if result.hull_mesh.vertex_count() > 0 {
-        meshes.push(&result.hull_mesh);
-    }
-    if result.bow_cap.vertex_count() > 0 {
-        meshes.push(&result.bow_cap);
-    }
-    if result.stern_cap.vertex_count() > 0 {
-        meshes.push(&result.stern_cap);
-    }
-    meshes
+    result.meshes.iter().filter(|m| m.vertex_count() > 0).collect()
 }
 
 /// Build a minimal valid GLB binary from mesh data.
