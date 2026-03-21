@@ -5,6 +5,7 @@ pub mod generate;
 pub mod loft;
 pub mod longitudinal;
 pub mod mesh;
+pub mod rail;
 pub mod section;
 pub mod station;
 pub mod validate;
