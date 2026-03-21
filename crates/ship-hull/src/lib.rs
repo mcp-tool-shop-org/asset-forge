@@ -6,6 +6,7 @@ pub mod loft;
 pub mod longitudinal;
 pub mod mesh;
 pub mod rail;
+pub mod rig;
 pub mod section;
 pub mod station;
 pub mod superstructure;
