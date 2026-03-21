@@ -9,3 +9,5 @@ description = "Canonical fixtures, mesh invariants, and metrics for ship generat
 [dependencies]
 ship-schema = { path = "../ship-schema" }
 ship-hull = { path = "../ship-hull" }
+ship-export = { path = "../ship-export" }
+serde_json = { workspace = true }
