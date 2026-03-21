@@ -1,5 +1,6 @@
 pub mod caps;
 pub mod curves;
+pub mod deck;
 pub mod generate;
 pub mod loft;
 pub mod longitudinal;
