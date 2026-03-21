@@ -8,4 +8,5 @@ pub mod mesh;
 pub mod rail;
 pub mod section;
 pub mod station;
+pub mod superstructure;
 pub mod validate;
