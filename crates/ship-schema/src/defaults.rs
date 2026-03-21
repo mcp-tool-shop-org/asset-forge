@@ -17,7 +17,7 @@ impl SloopVariantArchetype {
 /// Canonical "Classic Runner" sloop — the reference ship.
 pub fn classic_runner() -> SloopAssetSpec {
     SloopAssetSpec {
-        version: 1,
+        version: 2,
         kind: "ship".into(),
         class: ShipClass::Sloop,
         origin: AssetOrigin::Procedural,
@@ -50,18 +50,29 @@ pub fn classic_runner() -> SloopAssetSpec {
         deck: DeckSpec {
             cabin: true,
             cabin_length: 1.8,
+            cabin_width_ratio: 0.55,
+            cabin_height: 0.9,
+            cabin_offset: -0.12,
             hatch_count: 1,
+            hatch_spacing: 1.2,
             rail_height: 0.45,
+            rail_thickness: 0.04,
+            bulwark_style: BulwarkStyle::OpenRail,
             wheel: false,
             tiller: true,
             mast_offset: 0.4,
+            quarterdeck_length: 2.0,
         },
         rig: RigSpec {
             plan: SailPlan::GaffSloop,
             mast_count: 1,
             mast_rake: 0.08,
+            mast_diameter: 0.15,
             boom_length: 3.8,
+            boom_height: 1.0,
             gaff_length: 2.6,
+            gaff_angle: 0.52,
+            bowsprit_angle: 0.17,
             jib_count: 1,
             shroud_pairs: 2,
             stay_thickness: 0.03,
@@ -75,6 +86,7 @@ pub fn classic_runner() -> SloopAssetSpec {
             sail_tone: SailTone::WeatheredIvory,
             patchiness: 0.08,
             edge_wear: 0.1,
+            camber_style: CamberStyle::LightBillow,
         },
         attachments: AttachmentSpec {
             pennant: PennantStyle::Short,
@@ -122,6 +134,14 @@ pub fn courier() -> SloopAssetSpec {
     spec.hull.bow_style = BowStyle::Needle;
     spec.hull.fullness = 0.32;
     spec.hull.rake = 0.22;
+    // V2 deck
+    spec.deck.cabin_width_ratio = 0.45;
+    spec.deck.cabin_height = 0.7;
+    spec.deck.cabin_offset = -0.15;
+    spec.deck.rail_thickness = 0.03;
+    spec.deck.quarterdeck_length = 1.5;
+    // V2 rig
+    spec.rig.mast_diameter = 0.12;
     spec.attachments.pennant = PennantStyle::Navy;
     spec.attachments.lanterns = LanternStyle::None;
     spec.attachments.anchor_visible = false;
@@ -139,6 +159,11 @@ pub fn patrol() -> SloopAssetSpec {
     spec.hull.bow_style = BowStyle::Reinforced;
     spec.hull.fullness = 0.55;
     spec.hull.transom_width = 0.92;
+    // V2 deck
+    spec.deck.cabin_height = 1.0;
+    spec.deck.rail_thickness = 0.06;
+    spec.deck.bulwark_style = BulwarkStyle::SolidLow;
+    spec.deck.quarterdeck_length = 2.5;
     spec.attachments.cannons = CannonLayout::LightPortPair;
     spec.attachments.pennant = PennantStyle::Navy;
     spec.materials.hull_wood = WoodTone::PaintedDark;
@@ -161,6 +186,13 @@ pub fn smuggler() -> SloopAssetSpec {
     spec.hull.sheer = 0.15;
     spec.deck.cabin = true;
     spec.deck.cabin_length = 2.2;
+    // V2 deck
+    spec.deck.cabin_width_ratio = 0.60;
+    spec.deck.cabin_height = 0.8;
+    spec.deck.cabin_offset = -0.15;
+    spec.deck.rail_thickness = 0.03;
+    spec.deck.bulwark_style = BulwarkStyle::SolidLow;
+    spec.deck.quarterdeck_length = 1.8;
     spec.attachments = AttachmentSpec {
         pennant: PennantStyle::None,
         lanterns: LanternStyle::None,
@@ -195,6 +227,15 @@ pub fn fishing() -> SloopAssetSpec {
     spec.deck.cabin_length = 0.0;
     spec.deck.hatch_count = 2;
     spec.deck.tiller = true;
+    // V2 deck
+    spec.deck.cabin_width_ratio = 0.50;
+    spec.deck.cabin_height = 0.8;
+    spec.deck.hatch_spacing = 1.5;
+    spec.deck.rail_thickness = 0.05;
+    spec.deck.bulwark_style = BulwarkStyle::SolidMedium;
+    spec.deck.quarterdeck_length = 1.5;
+    // V2 rig
+    spec.rig.mast_diameter = 0.13;
     spec.rig.plan = SailPlan::ForeAndAft;
     spec.attachments = AttachmentSpec {
         pennant: PennantStyle::None,
@@ -230,6 +271,12 @@ pub fn merchant_light() -> SloopAssetSpec {
     spec.deck.cabin = true;
     spec.deck.cabin_length = 2.0;
     spec.deck.hatch_count = 2;
+    // V2 deck
+    spec.deck.cabin_height = 1.0;
+    spec.deck.hatch_spacing = 1.3;
+    spec.deck.rail_thickness = 0.05;
+    spec.deck.bulwark_style = BulwarkStyle::SolidLow;
+    spec.deck.quarterdeck_length = 2.2;
     spec.rig.plan = SailPlan::GaffSloop;
     spec.attachments.cargo_visible = true;
     spec.attachments.pennant = PennantStyle::Merchant;

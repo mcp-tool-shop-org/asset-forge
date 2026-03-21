@@ -132,6 +132,30 @@ pub enum FigureheadStyle {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
+pub enum BulwarkStyle {
+    OpenRail,
+    SolidLow,
+    SolidMedium,
+}
+
+impl Default for BulwarkStyle {
+    fn default() -> Self { Self::OpenRail }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum CamberStyle {
+    Flat,
+    LightBillow,
+    Full,
+}
+
+impl Default for CamberStyle {
+    fn default() -> Self { Self::LightBillow }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
 pub enum ShipStyleProfile {
     PortlightClassic,
     StorybookLowpoly,
@@ -197,14 +221,42 @@ pub struct DeckSpec {
     pub cabin: bool,
     /// Cabin length in meters.
     pub cabin_length: f64,
+    /// Cabin width as fraction of local deck beam (0..1). V2 field.
+    #[serde(default = "default_cabin_width_ratio")]
+    pub cabin_width_ratio: f64,
+    /// Cabin height in meters. V2 field.
+    #[serde(default = "default_cabin_height")]
+    pub cabin_height: f64,
+    /// Cabin fore/aft offset from hull center (fraction of length). V2 field.
+    #[serde(default = "default_cabin_offset")]
+    pub cabin_offset: f64,
     pub hatch_count: u8,
+    /// Hatch spacing in meters. V2 field.
+    #[serde(default = "default_hatch_spacing")]
+    pub hatch_spacing: f64,
     /// Rail height in meters.
     pub rail_height: f64,
+    /// Rail thickness in meters. V2 field.
+    #[serde(default = "default_rail_thickness")]
+    pub rail_thickness: f64,
+    /// Bulwark style. V2 field.
+    #[serde(default)]
+    pub bulwark_style: BulwarkStyle,
     pub wheel: bool,
     pub tiller: bool,
     /// Mast fore/aft offset from hull center (fraction of length, positive = forward).
     pub mast_offset: f64,
+    /// Quarterdeck length in meters. V2 field.
+    #[serde(default = "default_quarterdeck_length")]
+    pub quarterdeck_length: f64,
 }
+
+fn default_cabin_width_ratio() -> f64 { 0.55 }
+fn default_cabin_height() -> f64 { 0.9 }
+fn default_cabin_offset() -> f64 { -0.12 }
+fn default_hatch_spacing() -> f64 { 1.2 }
+fn default_rail_thickness() -> f64 { 0.04 }
+fn default_quarterdeck_length() -> f64 { 2.0 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -213,16 +265,33 @@ pub struct RigSpec {
     pub mast_count: u8,
     /// Mast backward lean (radians-ish, 0..0.3).
     pub mast_rake: f64,
+    /// Mast diameter in meters. V2 field.
+    #[serde(default = "default_mast_diameter")]
+    pub mast_diameter: f64,
     /// Boom length in meters.
     pub boom_length: f64,
+    /// Boom pivot height above deck in meters. V2 field.
+    #[serde(default = "default_boom_height")]
+    pub boom_height: f64,
     /// Gaff length in meters.
     pub gaff_length: f64,
+    /// Gaff angle from mast in radians. V2 field.
+    #[serde(default = "default_gaff_angle")]
+    pub gaff_angle: f64,
+    /// Bowsprit downward angle from horizontal in radians. V2 field.
+    #[serde(default = "default_bowsprit_angle")]
+    pub bowsprit_angle: f64,
     pub jib_count: u8,
     pub shroud_pairs: u8,
     /// Stay rope thickness in meters.
     pub stay_thickness: f64,
     pub yard_count: u8,
 }
+
+fn default_mast_diameter() -> f64 { 0.15 }
+fn default_boom_height() -> f64 { 1.0 }
+fn default_gaff_angle() -> f64 { 0.52 }  // ~30 degrees
+fn default_bowsprit_angle() -> f64 { 0.17 }  // ~10 degrees
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -238,6 +307,9 @@ pub struct SailSpec {
     pub patchiness: f64,
     /// Edge fraying factor (0..1).
     pub edge_wear: f64,
+    /// Camber style for sail surfaces. V2 field.
+    #[serde(default)]
+    pub camber_style: CamberStyle,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

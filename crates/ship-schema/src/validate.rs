@@ -3,7 +3,7 @@ use thiserror::Error;
 
 #[derive(Debug, Error)]
 pub enum SpecError {
-    #[error("invalid version: expected 1, got {0}")]
+    #[error("invalid version: expected 1 or 2, got {0}")]
     InvalidVersion(u32),
 
     #[error("invalid kind: expected \"ship\", got \"{0}\"")]
@@ -36,7 +36,7 @@ pub fn validate_spec(spec: &SloopAssetSpec) -> Vec<SpecError> {
     let mut errors = Vec::new();
 
     // Version
-    if spec.version != 1 {
+    if spec.version != 1 && spec.version != 2 {
         errors.push(SpecError::InvalidVersion(spec.version));
     }
 
@@ -96,6 +96,20 @@ pub fn validate_spec(spec: &SloopAssetSpec) -> Vec<SpecError> {
     }
     check_range(&mut errors, "rail_height", spec.deck.rail_height, 0.0, 2.0);
     check_range(&mut errors, "mast_offset", spec.deck.mast_offset, -1.0, 1.0);
+
+    // V2 deck fields
+    if spec.version >= 2 {
+        check_range(&mut errors, "cabin_width_ratio", spec.deck.cabin_width_ratio, 0.1, 1.0);
+        check_range(&mut errors, "cabin_height", spec.deck.cabin_height, 0.0, 3.0);
+        check_range(&mut errors, "cabin_offset", spec.deck.cabin_offset, -0.5, 0.5);
+        check_range(&mut errors, "hatch_spacing", spec.deck.hatch_spacing, 0.3, 5.0);
+        check_range(&mut errors, "rail_thickness", spec.deck.rail_thickness, 0.01, 0.2);
+        check_range(&mut errors, "quarterdeck_length", spec.deck.quarterdeck_length, 0.0, 10.0);
+        check_range(&mut errors, "mast_diameter", spec.rig.mast_diameter, 0.05, 0.5);
+        check_range(&mut errors, "boom_height", spec.rig.boom_height, 0.3, 3.0);
+        check_range(&mut errors, "gaff_angle", spec.rig.gaff_angle, 0.1, 1.2);
+        check_range(&mut errors, "bowsprit_angle", spec.rig.bowsprit_angle, 0.0, 0.5);
+    }
 
     errors
 }

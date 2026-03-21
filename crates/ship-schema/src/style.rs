@@ -1,4 +1,4 @@
-use crate::spec::{HullSpec, ShipDimensions, StyleLaw};
+use crate::spec::{DeckSpec, HullSpec, RigSpec, ShipDimensions, StyleLaw};
 
 /// Clamp a value into [min, max].
 fn clamp(v: f64, min: f64, max: f64) -> f64 {
@@ -68,6 +68,54 @@ impl<'a> StyleEnforcer<'a> {
         d.bowsprit_length = clamp(d.bowsprit_length, 0.0, d.overall_length * 0.4);
 
         d
+    }
+
+    /// Enforce style law on deck parameters. Returns a clamped copy.
+    pub fn enforce_deck(&self, deck: &DeckSpec) -> DeckSpec {
+        let mut d = deck.clone();
+        let dd = self.law.detail_density;
+        let ec = self.law.edge_chunkiness;
+
+        // Cabin height clamped by style
+        d.cabin_height = clamp(d.cabin_height, 0.0, lerp(1.5, 1.0, ec));
+
+        // Rail thickness: chunkier = thicker
+        let rail_min = lerp(0.02, 0.04, ec);
+        d.rail_thickness = clamp(d.rail_thickness, rail_min, 0.15);
+
+        // Quarterdeck length: exaggeration allows more
+        let qd_max = lerp(2.0, 4.0, self.law.silhouette_exaggeration);
+        d.quarterdeck_length = clamp(d.quarterdeck_length, 0.0, qd_max);
+
+        // Hatch count influenced by detail density
+        let max_hatches = lerp(1.0, 4.0, dd).round() as u8;
+        d.hatch_count = d.hatch_count.min(max_hatches);
+
+        d
+    }
+
+    /// Enforce style law on rig parameters. Returns a clamped copy.
+    pub fn enforce_rig(&self, rig: &RigSpec) -> RigSpec {
+        let mut r = rig.clone();
+        let rb = self.law.realism_bias;
+        let ec = self.law.edge_chunkiness;
+
+        // Mast rake: higher realism tightens
+        let rake_max = lerp(0.20, 0.12, rb);
+        r.mast_rake = clamp(r.mast_rake, 0.0, rake_max);
+
+        // Mast diameter: chunkier = thicker
+        let diam_min = lerp(0.08, 0.12, ec);
+        r.mast_diameter = clamp(r.mast_diameter, diam_min, 0.35);
+
+        // Gaff angle: realism clamps
+        let gaff_max = lerp(1.0, 0.7, rb);
+        r.gaff_angle = clamp(r.gaff_angle, 0.15, gaff_max);
+
+        // Bowsprit angle
+        r.bowsprit_angle = clamp(r.bowsprit_angle, 0.0, 0.4);
+
+        r
     }
 
     /// Compute section resolution from style law.
