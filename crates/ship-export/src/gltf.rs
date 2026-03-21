@@ -2,7 +2,7 @@ use ship_hull::generate::HullResult;
 use ship_hull::mesh::MeshData;
 use ship_schema::spec::SloopAssetSpec;
 
-use crate::groups::material_for_group;
+use crate::groups::{material_for_group, resolve_material_color};
 use crate::manifest::{AssetManifest, BoundingBoxInfo};
 
 /// Export a hull result as a binary GLB file.
@@ -17,7 +17,7 @@ pub fn export_glb(
         return Err(ExportError::NoMeshes);
     }
 
-    let glb_bytes = build_glb(&meshes)?;
+    let glb_bytes = build_glb(&meshes, spec)?;
 
     let mut total_verts = 0;
     let mut total_tris = 0;
@@ -63,7 +63,7 @@ fn collect_meshes(result: &HullResult) -> Vec<&MeshData> {
 
 /// Build a minimal valid GLB binary from mesh data.
 /// Uses raw JSON + binary buffer construction (no gltf-json dependency for flexibility).
-fn build_glb(meshes: &[&MeshData]) -> Result<Vec<u8>, ExportError> {
+fn build_glb(meshes: &[&MeshData], spec: &SloopAssetSpec) -> Result<Vec<u8>, ExportError> {
     // Build the binary buffer: all positions, normals, then indices for each mesh
     let mut bin_data: Vec<u8> = Vec::new();
     let mut accessors = Vec::new();
@@ -161,12 +161,14 @@ fn build_glb(meshes: &[&MeshData]) -> Result<Vec<u8>, ExportError> {
             idx
         } else {
             let idx = material_defs.len();
+            let color = resolve_material_color(&mat_name, &spec.materials, &spec.sails);
+            let is_metal = mat_name.contains("metal");
             material_defs.push(serde_json::json!({
                 "name": mat_name,
                 "pbrMetallicRoughness": {
-                    "baseColorFactor": [0.6, 0.5, 0.35, 1.0],
-                    "metallicFactor": 0.0,
-                    "roughnessFactor": 0.8
+                    "baseColorFactor": [color[0] as f32, color[1] as f32, color[2] as f32, color[3] as f32],
+                    "metallicFactor": if is_metal { 0.6 } else { 0.0 },
+                    "roughnessFactor": if is_metal { 0.4 } else { 0.8 }
                 }
             }));
             material_map.insert(mat_name, idx);
