@@ -1,8 +1,8 @@
-/// Centripetal Catmull-Rom interpolation with explicit endpoint tangents.
-///
-/// Control points are (u, value) pairs where u is normalized [0,1] position along hull length.
-/// Interior points use centripetal Catmull-Rom. Endpoints use one-sided tangent computation
-/// with configurable scale and slope cap for style-aware bow/stern behavior.
+//! Centripetal Catmull-Rom interpolation with explicit endpoint tangents.
+//!
+//! Control points are (u, value) pairs where u is normalized [0,1] position along hull length.
+//! Interior points use centripetal Catmull-Rom. Endpoints use one-sided tangent computation
+//! with configurable scale and slope cap for style-aware bow/stern behavior.
 
 /// A single control point on a longitudinal curve.
 #[derive(Debug, Clone, Copy)]
@@ -135,6 +135,11 @@ impl LongitudinalCurve {
     /// Number of control points.
     pub fn len(&self) -> usize {
         self.points.len()
+    }
+
+    /// Returns true if no control points.
+    pub fn is_empty(&self) -> bool {
+        self.points.is_empty()
     }
 
     /// Access control points.

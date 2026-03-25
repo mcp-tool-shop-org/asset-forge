@@ -130,28 +130,22 @@ pub enum FigureheadStyle {
     Simple,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum BulwarkStyle {
+    #[default]
     OpenRail,
     SolidLow,
     SolidMedium,
 }
 
-impl Default for BulwarkStyle {
-    fn default() -> Self { Self::OpenRail }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum CamberStyle {
     Flat,
+    #[default]
     LightBillow,
     Full,
-}
-
-impl Default for CamberStyle {
-    fn default() -> Self { Self::LightBillow }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]

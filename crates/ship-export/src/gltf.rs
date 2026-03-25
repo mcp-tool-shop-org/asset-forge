@@ -110,8 +110,8 @@ fn build_glb(meshes: &[&MeshData], spec: &SloopAssetSpec) -> Result<Vec<u8>, Exp
         // -- Normals --
         let norm_offset = bin_data.len();
         for n in &mesh.normals {
-            for i in 0..3 {
-                bin_data.extend_from_slice(&(n[i] as f32).to_le_bytes());
+            for component in &n[..3] {
+                bin_data.extend_from_slice(&(*component as f32).to_le_bytes());
             }
         }
         let norm_len = bin_data.len() - norm_offset;
@@ -213,7 +213,7 @@ fn build_glb(meshes: &[&MeshData], spec: &SloopAssetSpec) -> Result<Vec<u8>, Exp
     }));
 
     // Pad binary buffer to 4-byte alignment
-    while bin_data.len() % 4 != 0 {
+    while !bin_data.len().is_multiple_of(4) {
         bin_data.push(0);
     }
 

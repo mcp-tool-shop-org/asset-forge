@@ -353,7 +353,7 @@ mod tests {
     #[test]
     fn quarterdeck_stays_in_aft_region() {
         let mesh = make_quarterdeck_mesh();
-        if let Some((min, max)) = mesh.bounding_box() {
+        if let Some((_min, max)) = mesh.bounding_box() {
             // Quarterdeck should be in aft half (x < 0 since stern is -L/2)
             assert!(max[0] < 2.0, "quarterdeck should stay aft, max_x={}", max[0]);
         }

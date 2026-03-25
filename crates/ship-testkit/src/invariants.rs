@@ -32,7 +32,7 @@ pub fn check_mesh_invariants(mesh: &MeshData) -> Vec<String> {
     }
 
     // Triangle count is whole
-    if mesh.indices.len() % 3 != 0 {
+    if !mesh.indices.len().is_multiple_of(3) {
         violations.push(format!(
             "index count ({}) not divisible by 3", mesh.indices.len()
         ));

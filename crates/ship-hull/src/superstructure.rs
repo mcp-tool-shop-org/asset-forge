@@ -147,7 +147,7 @@ fn generate_box(
     y0: f64, y1: f64,
     z0: f64, z1: f64,
 ) {
-    let base = mesh.positions.len() as u32;
+    let _base = mesh.positions.len() as u32;
 
     // 6 faces, 4 vertices each = 24 vertices
     // Front (+X)

@@ -127,7 +127,7 @@ impl<'a> StyleEnforcer<'a> {
         let base = lerp(8.0, 20.0, dd);
         // Chunkiness pulls resolution down slightly
         let adjusted = base * lerp(1.0, 0.85, ec);
-        (adjusted.round() as usize).max(8).min(20)
+        (adjusted.round() as usize).clamp(8, 20)
     }
 }
 

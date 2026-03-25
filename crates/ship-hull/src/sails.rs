@@ -170,7 +170,7 @@ pub fn generate_jib(
         let bottom_left = lerp3(&tack, &head, v);
         let bottom_right = lerp3(&clew, &head, v);
 
-        let effective_cols = ((1.0 - v * 0.8) * segments_u as f64).max(1.0) as usize;
+        let _effective_cols = ((1.0 - v * 0.8) * segments_u as f64).max(1.0) as usize;
 
         for i in 0..=segments_u {
             let u = i as f64 / segments_u as f64;
