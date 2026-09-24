@@ -1,0 +1,30 @@
+summary: ""
+boundaries:
+  - name: .github
+    globs:
+      - .github/**
+    role: config
+  - name: root
+    globs:
+      - "*"
+    role: config
+  - name: ship-export
+    globs:
+      - crates/ship-export/**
+    role: code
+  - name: ship-hull
+    globs:
+      - crates/ship-hull/**
+    role: code
+  - name: ship-schema
+    globs:
+      - crates/ship-schema/**
+    role: code
+  - name: ship-testkit
+    globs:
+      - crates/ship-testkit/**
+    role: code
+  - name: site
+    globs:
+      - site/**
+    role: site

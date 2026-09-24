@@ -1,0 +1,313 @@
+{
+  "authorship": {
+    "parts": [],
+    "places": []
+  },
+  "boundaries": [
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": []
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": ".github",
+      "qualifyingSourceCommits": 0,
+      "rebaseline": null
+    },
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": []
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": "root",
+      "qualifyingSourceCommits": 0,
+      "rebaseline": null
+    },
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": [
+          "ship-testkit"
+        ]
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": "ship-export",
+      "qualifyingSourceCommits": 1,
+      "rebaseline": null
+    },
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": [
+          "ship-export",
+          "ship-testkit"
+        ]
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": "ship-hull",
+      "qualifyingSourceCommits": 1,
+      "rebaseline": null
+    },
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": [
+          "ship-export",
+          "ship-hull",
+          "ship-testkit"
+        ]
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": "ship-schema",
+      "qualifyingSourceCommits": 1,
+      "rebaseline": null
+    },
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": []
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": "ship-testkit",
+      "qualifyingSourceCommits": 1,
+      "rebaseline": null
+    },
+    {
+      "breakage": {
+        "coChangesOnly": [],
+        "collapsed": false,
+        "confidence": "low",
+        "importsAndCoChanges": [],
+        "importsOnly": []
+      },
+      "cohesion": null,
+      "cohesionDropped": false,
+      "confidence": "low",
+      "highWater": null,
+      "name": "site",
+      "qualifyingSourceCommits": 2,
+      "rebaseline": null
+    }
+  ],
+  "churn": {
+    "definition": "commits is how many commits in the window touch the file, including merges and commits dropped from coupling. lines is added plus deleted in those commits.",
+    "files": [
+      {
+        "commits": 4,
+        "lines": 63,
+        "path": ".github/workflows/ci.yml"
+      },
+      {
+        "commits": 2,
+        "lines": 5,
+        "path": ".gitignore"
+      },
+      {
+        "commits": 1,
+        "lines": 20,
+        "path": "CHANGELOG.md"
+      },
+      {
+        "commits": 1,
+        "lines": 188,
+        "path": "Cargo.lock"
+      },
+      {
+        "commits": 1,
+        "lines": 66,
+        "path": "README.md"
+      },
+      {
+        "commits": 1,
+        "lines": 34,
+        "path": "SECURITY.md"
+      },
+      {
+        "commits": 1,
+        "lines": 6,
+        "path": "crates/ship-export/src/gltf.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 15,
+        "path": "crates/ship-hull/src/curves.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 2,
+        "path": "crates/ship-hull/src/rail.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 2,
+        "path": "crates/ship-hull/src/sails.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 2,
+        "path": "crates/ship-hull/src/superstructure.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 14,
+        "path": "crates/ship-schema/src/spec.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 2,
+        "path": "crates/ship-schema/src/style.rs"
+      },
+      {
+        "commits": 1,
+        "lines": 2,
+        "path": "crates/ship-testkit/src/invariants.rs"
+      },
+      {
+        "commits": 2,
+        "lines": 26,
+        "path": "site/astro.config.mjs"
+      },
+      {
+        "commits": 2,
+        "lines": 14056,
+        "path": "site/package-lock.json"
+      },
+      {
+        "commits": 2,
+        "lines": 27,
+        "path": "site/package.json"
+      },
+      {
+        "commits": 1,
+        "lines": 4,
+        "path": "site/src/content.config.ts"
+      },
+      {
+        "commits": 1,
+        "lines": 96,
+        "path": "site/src/content/docs/handbook/beginners.md"
+      },
+      {
+        "commits": 1,
+        "lines": 69,
+        "path": "site/src/content/docs/handbook/getting-started.md"
+      },
+      {
+        "commits": 1,
+        "lines": 38,
+        "path": "site/src/content/docs/handbook/index.md"
+      },
+      {
+        "commits": 1,
+        "lines": 113,
+        "path": "site/src/content/docs/handbook/reference.md"
+      },
+      {
+        "commits": 1,
+        "lines": 26,
+        "path": "site/src/pages/index.astro"
+      },
+      {
+        "commits": 1,
+        "lines": 79,
+        "path": "site/src/site-config.ts"
+      },
+      {
+        "commits": 1,
+        "lines": 6,
+        "path": "site/src/styles/global.css"
+      },
+      {
+        "commits": 1,
+        "lines": 16,
+        "path": "site/src/styles/starlight-custom.css"
+      }
+    ]
+  },
+  "confidence": {
+    "level": "low",
+    "reason": "fewer than 30 qualifying commits in the window, and fewer than 20 source files reach 10 revisions"
+  },
+  "generatedAt": "2026-09-24T21:50:53.324Z",
+  "generatedFrom": {
+    "commit": "2b8956a28e5aab28a09a61df32ff824f9bcc3b5c"
+  },
+  "pairs": [],
+  "parameters": {
+    "appliedChangesetLimit": 14,
+    "changeset": 50,
+    "changesetFraction": 0.25,
+    "cohesionDrop": 0.2,
+    "couplingPopulation": "source",
+    "fallenShared": 3,
+    "floor": "fallen",
+    "floorHeld": false,
+    "floorTrigger": "both",
+    "headDate": "2026-09-17T18:33:38-07:00",
+    "inScopeFiles": 56,
+    "pinnedStart": null,
+    "priorFloor": null,
+    "qualifyingCommits": 5,
+    "qualifyingMinimum": 30,
+    "revisions": 5,
+    "shared": 10,
+    "sharedFloorUsed": 3,
+    "since": "2026-03-22T01:33:38.000Z",
+    "sourceExtensions": [
+      ".js",
+      ".mjs",
+      ".cjs",
+      ".jsx",
+      ".ts",
+      ".tsx",
+      ".mts",
+      ".cts",
+      ".py",
+      ".rs",
+      ".gd"
+    ],
+    "sourceFileReach": 20,
+    "sourceFileRise": 25,
+    "sourceFilesReachingStrongFloor": 0,
+    "strength": 0.5,
+    "windowDays": 180
+  },
+  "strengthDefinition": "strength is the shared qualifying commits divided by either. either is the number of qualifying commits that touch either file."
+}
