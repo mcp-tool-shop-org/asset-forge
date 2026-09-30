@@ -6,7 +6,7 @@
   ],
   "breaks": [
     {
-      "doors": 1,
+      "doors": 2,
       "importedBy": [
         "ship-export",
         "ship-hull",
@@ -18,7 +18,7 @@
       "partLabel": "ship-schema"
     },
     {
-      "doors": 1,
+      "doors": 2,
       "importedBy": [
         "ship-export",
         "ship-testkit"
@@ -29,7 +29,7 @@
       "partLabel": "ship-hull"
     },
     {
-      "doors": 1,
+      "doors": 2,
       "importedBy": [],
       "importedByTests": [
         "ship-testkit"
@@ -40,16 +40,50 @@
     }
   ],
   "changes": {
-    "first": true
+    "fileCounts": {
+      "added": 0,
+      "changed": 1,
+      "moved": 0,
+      "parts": 1,
+      "removed": 0
+    },
+    "items": [
+      {
+        "kind": "door",
+        "sentence": "export_all (crates/ship-export/Cargo.toml) is a new command. It runs crates/ship-export/examples/export_all.rs.",
+        "subjects": [
+          "crates/ship-export/Cargo.toml",
+          "crates/ship-export/examples/export_all.rs"
+        ]
+      },
+      {
+        "kind": "landing",
+        "sentence": "output is now written by crates/ship-export/examples/export_all.rs.",
+        "subjects": [
+          "output",
+          "crates/ship-export/examples/export_all.rs"
+        ]
+      },
+      {
+        "kind": "counts",
+        "sentence": "1 file changed content, across 1 part.",
+        "subjects": []
+      }
+    ],
+    "since": {
+      "commit": "2b8956a28e5aab28a09a61df32ff824f9bcc3b5c",
+      "generatedAt": "2026-09-24T21:50:53.324Z"
+    },
+    "unchanged": false
   },
   "changesTogether": [],
   "changesTogetherNote": [
     "Window: 180 days; a pair counts from 3 shared commits, since the window holds fewer than 30 qualifying commits."
   ],
   "changesTogetherWithTests": 0,
-  "commit": "2b8956a28e5aab28a09a61df32ff824f9bcc3b5c",
+  "commit": "2de16f4047c997265d57ffd59c02e3725a8a472f",
   "defaultBranch": "main",
-  "derived": "7 parts, mostly Rust (32 files). Work enters through 1 door; the busiest is CI, which reaches 4 parts.",
+  "derived": "7 parts, mostly Rust (32 files), CSS (2), TypeScript (2), Astro (1) and JavaScript (1). Work enters through 2 doors; the busiest is CI, which reaches 4 parts.",
   "doors": [
     {
       "checks": [
@@ -112,10 +146,49 @@
       "sends": [],
       "stages": [],
       "triggers": [
-        "on a pull request touching 8 paths",
+        "on a pull request to main touching 8 paths",
         "on a push to main touching 8 paths",
         "or by hand"
       ]
+    },
+    {
+      "checks": [],
+      "checksCount": 0,
+      "checksMore": 0,
+      "example": true,
+      "file": "crates/ship-export/Cargo.toml",
+      "id": "crates/ship-export/Cargo.toml#export_all",
+      "kind": "command",
+      "landings": [],
+      "name": "export_all",
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "ship-export",
+          "depth": 0,
+          "files": 5
+        },
+        {
+          "boundary": "ship-hull",
+          "depth": 1,
+          "files": 14
+        },
+        {
+          "boundary": "ship-schema",
+          "depth": 1,
+          "files": 4
+        }
+      ],
+      "runWith": "cargo run --example export_all",
+      "runs": [
+        "crates/ship-export/examples/export_all.rs"
+      ],
+      "runsCount": 1,
+      "runsMore": 0,
+      "sends": [],
+      "stages": [],
+      "triggers": [],
+      "untracked": "output/, which is not tracked"
     }
   ],
   "duplicates": [],
@@ -138,11 +211,12 @@
       "to": "ship-schema"
     }
   ],
+  "engine": "1.24.0",
   "generated": [],
-  "generatedAt": "2026-09-24T21:50:53.324Z",
+  "generatedAt": "2026-09-30T20:06:57.450Z",
   "limits": [
-    "3 writes use paths built at run time and are not named here.",
-    "Statistics confidence is low: fewer than 30 qualifying commits in the window, and fewer than 20 source files reach 10 revisions."
+    "1 write goes to places this repository does not track, so it is not listed as generated.",
+    "Statistics confidence is low: fewer than 30 qualifying commits in the window, and fewer than 25 source files reach 10 revisions."
   ],
   "mainDoor": ".github/workflows/ci.yml",
   "partLabels": {
@@ -161,9 +235,13 @@
   "startDoor": ".github/workflows/ci.yml",
   "startHere": [
     ".github/workflows/ci.yml",
-    "crates/ship-hull/src/caps.rs",
-    "crates/ship-schema/src/defaults.rs"
+    "crates/ship-testkit/tests/golden_family.rs",
+    "crates/ship-hull/src/generate.rs",
+    "crates/ship-schema/src/validate.rs",
+    "crates/ship-schema/src/defaults.rs",
+    "crates/ship-schema/src/spec.rs"
   ],
+  "startReason": "This path starts at crates/ship-testkit/tests/golden_family.rs, the test CI runs that reaches the most parts, since CI runs only tests.",
   "summary": null,
   "summaryFrom": null,
   "testFiles": 18,
@@ -173,7 +251,7 @@
     "ship-schema": 5,
     "ship-testkit": 1
   },
-  "unnamedWrites": 3,
+  "unnamedWrites": 0,
   "unread": [],
   "unreadFiles": 0,
   "unreadNote": [],

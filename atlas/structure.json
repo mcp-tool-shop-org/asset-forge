@@ -9,7 +9,7 @@
       "externals": 0,
       "files": [
         {
-          "hash": "eb20f1201aa2a08296d6c09d6cb57ab82b2c8bb61a26535192d9761237f3489a",
+          "hash": "e77278e7583789d20c9fdf2dd3ca3748d26021a6710dfef7ae0f617815b08ec4",
           "path": ".github/workflows/ci.yml"
         }
       ],
@@ -74,7 +74,7 @@
       "dynamicReads": 0,
       "dynamicSpawns": 0,
       "dynamicSpawnsInTests": 0,
-      "dynamicWrites": 3,
+      "dynamicWrites": 0,
       "entryPoints": [
         "crates/ship-export/src/lib.rs"
       ],
@@ -85,19 +85,170 @@
           "path": "crates/ship-export/Cargo.toml"
         },
         {
+          "entry": "main",
+          "entryRule": 1,
           "hash": "b7fea578da4c20f494b2ad2799edbd01a450d2c75de90b2593408c770a0e9827",
           "importsFiles": [
             "crates/ship-export/src/lib.rs",
             "crates/ship-hull/src/generate.rs",
             "crates/ship-schema/src/spec.rs"
           ],
-          "path": "crates/ship-export/examples/export_all.rs"
+          "library": "crates/ship-export/src/lib.rs",
+          "path": "crates/ship-export/examples/export_all.rs",
+          "sequences": [
+            {
+              "calls": [
+                {
+                  "line": 11,
+                  "name": "all",
+                  "receiver": "SloopVariantArchetype",
+                  "target": {
+                    "file": "crates/ship-schema/src/spec.rs"
+                  }
+                },
+                {
+                  "inner": [
+                    {
+                      "line": 46,
+                      "name": "validate_spec",
+                      "target": {
+                        "file": "crates/ship-schema/src/validate.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 53,
+                      "name": "new",
+                      "receiver": "StyleEnforcer",
+                      "target": {
+                        "file": "crates/ship-schema/src/style.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 56,
+                      "name": "from_spec",
+                      "receiver": "HullCurves",
+                      "target": {
+                        "file": "crates/ship-hull/src/longitudinal.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 58,
+                      "name": "compute_stations",
+                      "target": {
+                        "file": "crates/ship-hull/src/station.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 59,
+                      "name": "config_from_style",
+                      "target": {
+                        "file": "crates/ship-hull/src/section.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 65,
+                      "name": "sample_section",
+                      "target": {
+                        "file": "crates/ship-hull/src/section.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 68,
+                      "name": "loft_hull",
+                      "target": {
+                        "file": "crates/ship-hull/src/loft.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 69,
+                      "name": "bow_cap",
+                      "target": {
+                        "file": "crates/ship-hull/src/caps.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 70,
+                      "name": "stern_cap",
+                      "target": {
+                        "file": "crates/ship-hull/src/caps.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 73,
+                      "name": "extract_deck_rim",
+                      "target": {
+                        "file": "crates/ship-hull/src/deck.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 74,
+                      "name": "generate_deck_surface",
+                      "target": {
+                        "file": "crates/ship-hull/src/deck.rs"
+                      },
+                      "via": "generate_ship"
+                    },
+                    {
+                      "line": 75,
+                      "name": "generate_rail",
+                      "target": {
+                        "file": "crates/ship-hull/src/rail.rs"
+                      },
+                      "via": "generate_ship"
+                    }
+                  ],
+                  "innerTruncated": true,
+                  "line": 13,
+                  "name": "generate_hull",
+                  "target": {
+                    "file": "crates/ship-hull/src/generate.rs"
+                  }
+                },
+                {
+                  "line": 14,
+                  "name": "export_glb",
+                  "target": {
+                    "file": "crates/ship-export/src/lib.rs"
+                  }
+                }
+              ],
+              "exported": false,
+              "invokedAtTopLevel": true,
+              "isDefaultExport": false,
+              "name": "main"
+            }
+          ]
         },
         {
           "exports": [
             "export_glb"
           ],
+          "failurePaths": [
+            {
+              "in": "export_glb",
+              "kind": "err",
+              "line": 17
+            }
+          ],
           "hash": "267e39cf1b5b8c217fdac3a64c93c3f0d81deb2d296ca0c31fc4134710e0974a",
+          "importOrder": [
+            "crates/ship-hull/src/generate.rs",
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-export/src/groups.rs",
+            "crates/ship-export/src/manifest.rs",
+            "crates/ship-schema/src/defaults.rs"
+          ],
           "importsFiles": [
             "crates/ship-export/src/groups.rs",
             "crates/ship-export/src/manifest.rs",
@@ -142,6 +293,9 @@
       "name": "ship-export",
       "origin": "authored",
       "role": "code",
+      "testRunners": [
+        "cargo test"
+      ],
       "testedBy": 2,
       "unresolvedSites": 0
     },
@@ -165,6 +319,14 @@
             "stern_cap"
           ],
           "hash": "7b4eccc834803536916f1f354ff688a9e58d62846e0df5e28a382f78f54541f4",
+          "importOrder": [
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/section.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/longitudinal.rs",
             "crates/ship-hull/src/mesh.rs",
@@ -177,6 +339,23 @@
           "testsInside": true
         },
         {
+          "failurePaths": [
+            {
+              "in": "new",
+              "kind": "err",
+              "line": 51
+            },
+            {
+              "in": "new",
+              "kind": "err",
+              "line": 56
+            },
+            {
+              "in": "new",
+              "kind": "err",
+              "line": 59
+            }
+          ],
           "hash": "61a090e0ba473510f2547c7b08a1337c1ef3e795901260ee35223d0c8f03f1e3",
           "path": "crates/ship-hull/src/curves.rs",
           "testsInside": true
@@ -187,6 +366,14 @@
             "generate_deck_surface"
           ],
           "hash": "eda08ef559bb0d357399d73f9f92cfc57f0350dacd5a3c93c72113e38e84f437",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/style.rs",
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-schema/src/defaults.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/longitudinal.rs",
             "crates/ship-hull/src/mesh.rs",
@@ -199,9 +386,18 @@
           "testsInside": true
         },
         {
+          "entry": "generate_ship",
+          "entryRule": 4,
           "exports": [
             "generate_hull",
             "generate_ship"
+          ],
+          "failurePaths": [
+            {
+              "in": "generate_ship",
+              "kind": "err",
+              "line": 48
+            }
           ],
           "hash": "e2de23662cef15f31360e8142a942f8b48c2e540cd78df0b07362554e2237819",
           "importsFiles": [
@@ -223,6 +419,390 @@
             "crates/ship-schema/src/validate.rs"
           ],
           "path": "crates/ship-hull/src/generate.rs",
+          "sequences": [
+            {
+              "calls": [
+                {
+                  "line": 46,
+                  "name": "validate_spec",
+                  "target": {
+                    "file": "crates/ship-schema/src/validate.rs"
+                  }
+                },
+                {
+                  "line": 53,
+                  "name": "new",
+                  "receiver": "StyleEnforcer",
+                  "target": {
+                    "file": "crates/ship-schema/src/style.rs"
+                  }
+                },
+                {
+                  "line": 56,
+                  "name": "from_spec",
+                  "receiver": "HullCurves",
+                  "target": {
+                    "file": "crates/ship-hull/src/longitudinal.rs"
+                  }
+                },
+                {
+                  "line": 58,
+                  "name": "compute_stations",
+                  "target": {
+                    "file": "crates/ship-hull/src/station.rs"
+                  }
+                },
+                {
+                  "line": 59,
+                  "name": "config_from_style",
+                  "target": {
+                    "file": "crates/ship-hull/src/section.rs"
+                  }
+                },
+                {
+                  "line": 65,
+                  "name": "sample_section",
+                  "target": {
+                    "file": "crates/ship-hull/src/section.rs"
+                  }
+                },
+                {
+                  "line": 68,
+                  "name": "loft_hull",
+                  "target": {
+                    "file": "crates/ship-hull/src/loft.rs"
+                  }
+                },
+                {
+                  "line": 69,
+                  "name": "bow_cap",
+                  "target": {
+                    "file": "crates/ship-hull/src/caps.rs"
+                  }
+                },
+                {
+                  "line": 70,
+                  "name": "stern_cap",
+                  "target": {
+                    "file": "crates/ship-hull/src/caps.rs"
+                  }
+                },
+                {
+                  "line": 73,
+                  "name": "extract_deck_rim",
+                  "target": {
+                    "file": "crates/ship-hull/src/deck.rs"
+                  }
+                },
+                {
+                  "line": 74,
+                  "name": "generate_deck_surface",
+                  "target": {
+                    "file": "crates/ship-hull/src/deck.rs"
+                  }
+                },
+                {
+                  "line": 75,
+                  "name": "generate_rail",
+                  "target": {
+                    "file": "crates/ship-hull/src/rail.rs"
+                  }
+                },
+                {
+                  "line": 76,
+                  "name": "generate_quarterdeck",
+                  "target": {
+                    "file": "crates/ship-hull/src/rail.rs"
+                  }
+                },
+                {
+                  "line": 81,
+                  "name": "generate_cabin",
+                  "target": {
+                    "file": "crates/ship-hull/src/superstructure.rs"
+                  }
+                },
+                {
+                  "line": 82,
+                  "name": "generate_hatches",
+                  "target": {
+                    "file": "crates/ship-hull/src/superstructure.rs"
+                  }
+                },
+                {
+                  "line": 83,
+                  "name": "generate_helm",
+                  "target": {
+                    "file": "crates/ship-hull/src/superstructure.rs"
+                  }
+                },
+                {
+                  "line": 88,
+                  "name": "compute_rig_anchors",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  }
+                },
+                {
+                  "line": 89,
+                  "name": "generate_mast",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  }
+                },
+                {
+                  "line": 90,
+                  "name": "generate_bowsprit",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  }
+                },
+                {
+                  "line": 91,
+                  "name": "generate_boom",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  }
+                },
+                {
+                  "line": 92,
+                  "name": "generate_gaff",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  }
+                },
+                {
+                  "line": 93,
+                  "name": "generate_rigging",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  }
+                },
+                {
+                  "line": 98,
+                  "name": "compute_sail_anchors",
+                  "target": {
+                    "file": "crates/ship-hull/src/sails.rs"
+                  }
+                },
+                {
+                  "line": 99,
+                  "name": "generate_mainsail",
+                  "target": {
+                    "file": "crates/ship-hull/src/sails.rs"
+                  }
+                }
+              ],
+              "exported": true,
+              "invokedAtTopLevel": false,
+              "isDefaultExport": false,
+              "name": "generate_ship",
+              "truncated": true
+            },
+            {
+              "calls": [
+                {
+                  "line": 46,
+                  "name": "validate_spec",
+                  "target": {
+                    "file": "crates/ship-schema/src/validate.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 53,
+                  "name": "new",
+                  "receiver": "StyleEnforcer",
+                  "target": {
+                    "file": "crates/ship-schema/src/style.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 56,
+                  "name": "from_spec",
+                  "receiver": "HullCurves",
+                  "target": {
+                    "file": "crates/ship-hull/src/longitudinal.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 58,
+                  "name": "compute_stations",
+                  "target": {
+                    "file": "crates/ship-hull/src/station.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 59,
+                  "name": "config_from_style",
+                  "target": {
+                    "file": "crates/ship-hull/src/section.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 65,
+                  "name": "sample_section",
+                  "target": {
+                    "file": "crates/ship-hull/src/section.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 68,
+                  "name": "loft_hull",
+                  "target": {
+                    "file": "crates/ship-hull/src/loft.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 69,
+                  "name": "bow_cap",
+                  "target": {
+                    "file": "crates/ship-hull/src/caps.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 70,
+                  "name": "stern_cap",
+                  "target": {
+                    "file": "crates/ship-hull/src/caps.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 73,
+                  "name": "extract_deck_rim",
+                  "target": {
+                    "file": "crates/ship-hull/src/deck.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 74,
+                  "name": "generate_deck_surface",
+                  "target": {
+                    "file": "crates/ship-hull/src/deck.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 75,
+                  "name": "generate_rail",
+                  "target": {
+                    "file": "crates/ship-hull/src/rail.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 76,
+                  "name": "generate_quarterdeck",
+                  "target": {
+                    "file": "crates/ship-hull/src/rail.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 81,
+                  "name": "generate_cabin",
+                  "target": {
+                    "file": "crates/ship-hull/src/superstructure.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 82,
+                  "name": "generate_hatches",
+                  "target": {
+                    "file": "crates/ship-hull/src/superstructure.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 83,
+                  "name": "generate_helm",
+                  "target": {
+                    "file": "crates/ship-hull/src/superstructure.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 88,
+                  "name": "compute_rig_anchors",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 89,
+                  "name": "generate_mast",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 90,
+                  "name": "generate_bowsprit",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 91,
+                  "name": "generate_boom",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 92,
+                  "name": "generate_gaff",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 93,
+                  "name": "generate_rigging",
+                  "target": {
+                    "file": "crates/ship-hull/src/rig.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 98,
+                  "name": "compute_sail_anchors",
+                  "target": {
+                    "file": "crates/ship-hull/src/sails.rs"
+                  },
+                  "via": "generate_ship"
+                },
+                {
+                  "line": 99,
+                  "name": "generate_mainsail",
+                  "target": {
+                    "file": "crates/ship-hull/src/sails.rs"
+                  },
+                  "via": "generate_ship"
+                }
+              ],
+              "exported": true,
+              "invokedAtTopLevel": false,
+              "isDefaultExport": false,
+              "name": "generate_hull",
+              "truncated": true
+            }
+          ],
           "testsInside": true
         },
         {
@@ -250,6 +830,15 @@
             "loft_hull"
           ],
           "hash": "43090f05514f26f06a7730c169833c3d9874b99b662b733030a59a08b3ccfe47",
+          "importOrder": [
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/section.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/longitudinal.rs",
             "crates/ship-hull/src/mesh.rs",
@@ -264,6 +853,12 @@
         },
         {
           "hash": "f1f443a38e95957900110a12a8ab4e2f4bc67e9fba3cc61cfd86e8e6a031eb11",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/style.rs",
+            "crates/ship-hull/src/curves.rs",
+            "crates/ship-schema/src/defaults.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/curves.rs",
             "crates/ship-schema/src/defaults.rs",
@@ -283,6 +878,15 @@
             "generate_rail"
           ],
           "hash": "7daaf04cd26972e9b2aee52d27b3f9c22344398fd22e756fe5a19259b6b0a326",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-hull/src/deck.rs",
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/deck.rs",
             "crates/ship-hull/src/longitudinal.rs",
@@ -305,6 +909,15 @@
             "generate_rigging"
           ],
           "hash": "1d795807972de001dd6f5c947621295c56ad41f8f5dfa1ee79cb84bb42f44947",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-hull/src/deck.rs",
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/deck.rs",
             "crates/ship-hull/src/longitudinal.rs",
@@ -324,6 +937,15 @@
             "generate_mainsail"
           ],
           "hash": "d65c4a25caa9f7e58314b1ab4affe7e3305176f884ae546cd69d4a0f97d9c67c",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/rig.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/longitudinal.rs",
             "crates/ship-hull/src/mesh.rs",
@@ -342,6 +964,13 @@
             "sample_section"
           ],
           "hash": "4271547382215679e8c3527437da9082df8a4d9cace13a0d56cafb7369875489",
+          "importOrder": [
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/longitudinal.rs",
             "crates/ship-hull/src/station.rs",
@@ -374,6 +1003,15 @@
             "generate_helm"
           ],
           "hash": "190f990161d4aecbbecfa1c29835439d59a41242e9b50a55ed2fd5431868fa32",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-hull/src/deck.rs",
+            "crates/ship-hull/src/mesh.rs",
+            "crates/ship-hull/src/station.rs",
+            "crates/ship-hull/src/longitudinal.rs",
+            "crates/ship-schema/src/defaults.rs",
+            "crates/ship-schema/src/style.rs"
+          ],
           "importsFiles": [
             "crates/ship-hull/src/deck.rs",
             "crates/ship-hull/src/longitudinal.rs",
@@ -404,6 +1042,9 @@
       "name": "ship-hull",
       "origin": "authored",
       "role": "code",
+      "testRunners": [
+        "cargo test"
+      ],
       "testedBy": 13,
       "unresolvedSites": 0
     },
@@ -453,6 +1094,10 @@
             "migrate_to_current"
           ],
           "hash": "b4b9628ad5a06e176f9b765375ea3246774ce63c91d9dbecf8b91acd31f286ab",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/defaults.rs"
+          ],
           "importsFiles": [
             "crates/ship-schema/src/defaults.rs",
             "crates/ship-schema/src/spec.rs"
@@ -466,6 +1111,10 @@
         },
         {
           "hash": "7b67b822fae3a55e120e73c330acffcf96ca2a3d68686e29570970e1040d4c7e",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/defaults.rs"
+          ],
           "importsFiles": [
             "crates/ship-schema/src/defaults.rs",
             "crates/ship-schema/src/spec.rs"
@@ -478,6 +1127,10 @@
             "validate_spec"
           ],
           "hash": "71562fe76a5dcb74561d2bd9c0c88c2c62bc09811d1f444194269e815af6a878",
+          "importOrder": [
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-schema/src/defaults.rs"
+          ],
           "importsFiles": [
             "crates/ship-schema/src/defaults.rs",
             "crates/ship-schema/src/spec.rs"
@@ -501,6 +1154,9 @@
       "name": "ship-schema",
       "origin": "authored",
       "role": "code",
+      "testRunners": [
+        "cargo test"
+      ],
       "testedBy": 5,
       "unresolvedSites": 0
     },
@@ -562,6 +1218,15 @@
         },
         {
           "hash": "55d864fdafafb37e66e3cb467e66e5d94e945b619731bfab00cfcebdb1d4bbc1",
+          "importOrder": [
+            "crates/ship-hull/src/generate.rs",
+            "crates/ship-export/src/lib.rs",
+            "crates/ship-schema/src/spec.rs",
+            "crates/ship-testkit/src/fixtures.rs",
+            "crates/ship-testkit/src/invariants.rs",
+            "crates/ship-testkit/src/metrics.rs",
+            "crates/ship-schema/src/lib.rs"
+          ],
           "importsFiles": [
             "crates/ship-export/src/lib.rs",
             "crates/ship-hull/src/generate.rs",
@@ -571,6 +1236,7 @@
             "crates/ship-testkit/src/invariants.rs",
             "crates/ship-testkit/src/metrics.rs"
           ],
+          "library": "crates/ship-testkit/src/lib.rs",
           "path": "crates/ship-testkit/tests/golden_family.rs",
           "testsInside": true
         }
@@ -582,6 +1248,9 @@
       "name": "ship-testkit",
       "origin": "authored",
       "role": "code",
+      "testRunners": [
+        "cargo test"
+      ],
       "testedBy": 1,
       "unresolvedSites": 0
     },
@@ -606,6 +1275,7 @@
           "path": "site/package.json"
         },
         {
+          "constantOnly": true,
           "hash": "34b036603793e4eb4bfad87e1fd7f851a84fef6a762257a3b2dc1411983d26df",
           "path": "site/src/content.config.ts"
         },
@@ -627,9 +1297,18 @@
         },
         {
           "hash": "e71929be4c6d9faa255d0cc879051045d1664e8d69160b870a622443c6902c60",
+          "importOrder": [
+            "site/src/styles/global.css",
+            "site/src/site-config.ts"
+          ],
+          "importsFiles": [
+            "site/src/site-config.ts",
+            "site/src/styles/global.css"
+          ],
           "path": "site/src/pages/index.astro"
         },
         {
+          "constantOnly": true,
           "hash": "6ca4ecd61fbdd27648ea38952aafb316af95ae3a2f26b24c6efc5ac16bc084a8",
           "path": "site/src/site-config.ts"
         },
@@ -658,28 +1337,71 @@
       "checksCount": 4,
       "commands": [
         {
+          "dir": "",
           "job": "build-and-test",
-          "step": "Atlas check",
-          "text": "npx --yes @dogfood-lab/atlas@1.19.0 check"
+          "programs": [
+            "npx"
+          ],
+          "step": "Atlas check"
         },
         {
+          "dir": "",
           "job": "build-and-test",
-          "step": "Check",
-          "text": "cargo check --workspace"
+          "programs": [
+            "cargo"
+          ],
+          "step": "Check"
         },
         {
+          "dir": "",
           "job": "build-and-test",
-          "step": "Clippy",
-          "text": "cargo clippy --workspace -- -D warnings"
+          "programs": [
+            "cargo"
+          ],
+          "step": "Clippy"
         },
         {
+          "dir": "",
           "job": "build-and-test",
-          "step": "Test",
-          "text": "cargo test --workspace"
+          "programs": [
+            "cargo"
+          ],
+          "step": "Test"
         }
       ],
       "elsewhere": [],
       "file": ".github/workflows/ci.yml",
+      "jobs": [
+        {
+          "basis": "declared",
+          "name": "build-and-test",
+          "runsOn": [
+            {
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "platform": {
+                "cpu": "x64",
+                "libc": "glibc",
+                "os": "linux"
+              }
+            }
+          ],
+          "setup": [
+            {
+              "ranges": [
+                {
+                  "from": "22",
+                  "range": ">=22.0.0 <23.0.0-0"
+                }
+              ],
+              "step": "Set up Node for the Atlas check",
+              "uses": "actions/setup-node",
+              "version": "22"
+            }
+          ]
+        }
+      ],
       "landings": [],
       "mentions": [],
       "name": "CI",
@@ -878,6 +1600,14 @@
         "releases": false
       },
       "stages": [],
+      "tests": [
+        {
+          "files": 18,
+          "job": "build-and-test",
+          "runner": "cargo test",
+          "step": "Test"
+        }
+      ],
       "triggers": [
         {
           "branches": [
@@ -922,6 +1652,70 @@
         "dtolnay/rust-toolchain"
       ],
       "usesWorkflowToken": false
+    },
+    {
+      "checksCount": 0,
+      "commands": [],
+      "elsewhere": [],
+      "example": true,
+      "file": "crates/ship-export/Cargo.toml",
+      "kind": "command",
+      "landings": [],
+      "mentions": [],
+      "name": "export_all",
+      "permissions": [],
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "ship-export",
+          "depth": 0,
+          "files": 5
+        },
+        {
+          "boundary": "ship-hull",
+          "depth": 1,
+          "enters": {
+            "file": "crates/ship-hull/src/generate.rs",
+            "from": "crates/ship-export/examples/export_all.rs"
+          },
+          "files": 14
+        },
+        {
+          "boundary": "ship-schema",
+          "depth": 1,
+          "enters": {
+            "file": "crates/ship-schema/src/spec.rs",
+            "from": "crates/ship-export/examples/export_all.rs"
+          },
+          "files": 4
+        }
+      ],
+      "readers": [],
+      "runs": [
+        {
+          "path": "crates/ship-export/examples/export_all.rs",
+          "runKind": "executes"
+        }
+      ],
+      "runsCount": 1,
+      "secrets": [],
+      "sends": {
+        "deploysPages": false,
+        "dispatchesTo": [],
+        "opensIssues": false,
+        "opensIssuesOnFailure": false,
+        "opensPullRequests": false,
+        "publishes": false,
+        "publishesTo": [],
+        "releases": false
+      },
+      "stages": [],
+      "triggers": [],
+      "untrackedLandings": [
+        "output/"
+      ],
+      "uses": [],
+      "usesWorkflowToken": false
     }
   ],
   "edges": [
@@ -957,8 +1751,9 @@
       "to": "ship-schema"
     }
   ],
+  "engine": "1.24.0",
   "generatedFrom": {
-    "commit": "2b8956a28e5aab28a09a61df32ff824f9bcc3b5c",
+    "commit": "2de16f4047c997265d57ffd59c02e3725a8a472f",
     "tracked": 56
   },
   "landings": [
@@ -1035,6 +1830,17 @@
       ],
       "target": "crates/ship-testkit",
       "writers": []
+    },
+    {
+      "readers": [],
+      "target": "output",
+      "tracked": false,
+      "writers": [
+        {
+          "by": "crates/ship-export/examples/export_all.rs",
+          "confidence": "ast"
+        }
+      ]
     },
     {
       "readers": [
