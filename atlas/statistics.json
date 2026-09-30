@@ -51,7 +51,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "ship-export",
-      "qualifyingSourceCommits": 1,
+      "qualifyingSourceCommits": 0,
       "rebaseline": null
     },
     {
@@ -70,7 +70,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "ship-hull",
-      "qualifyingSourceCommits": 1,
+      "qualifyingSourceCommits": 0,
       "rebaseline": null
     },
     {
@@ -90,7 +90,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "ship-schema",
-      "qualifyingSourceCommits": 1,
+      "qualifyingSourceCommits": 0,
       "rebaseline": null
     },
     {
@@ -106,7 +106,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "ship-testkit",
-      "qualifyingSourceCommits": 1,
+      "qualifyingSourceCommits": 0,
       "rebaseline": null
     },
     {
@@ -122,7 +122,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "site",
-      "qualifyingSourceCommits": 2,
+      "qualifyingSourceCommits": 1,
       "rebaseline": null
     }
   ],
@@ -131,147 +131,62 @@
     "files": [
       {
         "commits": 4,
-        "lines": 63,
+        "lines": 24,
         "path": ".github/workflows/ci.yml"
       },
       {
-        "commits": 2,
-        "lines": 5,
-        "path": ".gitignore"
+        "commits": 1,
+        "lines": 68,
+        "path": "atlas/README.md"
       },
       {
         "commits": 1,
-        "lines": 20,
-        "path": "CHANGELOG.md"
+        "lines": 30,
+        "path": "atlas/boundaries.yaml"
       },
       {
         "commits": 1,
-        "lines": 188,
-        "path": "Cargo.lock"
+        "lines": 183,
+        "path": "atlas/page.json"
       },
       {
         "commits": 1,
-        "lines": 66,
-        "path": "README.md"
+        "lines": 313,
+        "path": "atlas/statistics.json"
       },
       {
         "commits": 1,
-        "lines": 34,
-        "path": "SECURITY.md"
-      },
-      {
-        "commits": 1,
-        "lines": 6,
-        "path": "crates/ship-export/src/gltf.rs"
-      },
-      {
-        "commits": 1,
-        "lines": 15,
-        "path": "crates/ship-hull/src/curves.rs"
+        "lines": 1067,
+        "path": "atlas/structure.json"
       },
       {
         "commits": 1,
         "lines": 2,
-        "path": "crates/ship-hull/src/rail.rs"
-      },
-      {
-        "commits": 1,
-        "lines": 2,
-        "path": "crates/ship-hull/src/sails.rs"
-      },
-      {
-        "commits": 1,
-        "lines": 2,
-        "path": "crates/ship-hull/src/superstructure.rs"
-      },
-      {
-        "commits": 1,
-        "lines": 14,
-        "path": "crates/ship-schema/src/spec.rs"
-      },
-      {
-        "commits": 1,
-        "lines": 2,
-        "path": "crates/ship-schema/src/style.rs"
-      },
-      {
-        "commits": 1,
-        "lines": 2,
-        "path": "crates/ship-testkit/src/invariants.rs"
-      },
-      {
-        "commits": 2,
-        "lines": 26,
         "path": "site/astro.config.mjs"
       },
       {
-        "commits": 2,
-        "lines": 14056,
+        "commits": 1,
+        "lines": 6126,
         "path": "site/package-lock.json"
-      },
-      {
-        "commits": 2,
-        "lines": 27,
-        "path": "site/package.json"
-      },
-      {
-        "commits": 1,
-        "lines": 4,
-        "path": "site/src/content.config.ts"
-      },
-      {
-        "commits": 1,
-        "lines": 96,
-        "path": "site/src/content/docs/handbook/beginners.md"
-      },
-      {
-        "commits": 1,
-        "lines": 69,
-        "path": "site/src/content/docs/handbook/getting-started.md"
-      },
-      {
-        "commits": 1,
-        "lines": 38,
-        "path": "site/src/content/docs/handbook/index.md"
-      },
-      {
-        "commits": 1,
-        "lines": 113,
-        "path": "site/src/content/docs/handbook/reference.md"
-      },
-      {
-        "commits": 1,
-        "lines": 26,
-        "path": "site/src/pages/index.astro"
-      },
-      {
-        "commits": 1,
-        "lines": 79,
-        "path": "site/src/site-config.ts"
       },
       {
         "commits": 1,
         "lines": 6,
-        "path": "site/src/styles/global.css"
-      },
-      {
-        "commits": 1,
-        "lines": 16,
-        "path": "site/src/styles/starlight-custom.css"
+        "path": "site/package.json"
       }
     ]
   },
   "confidence": {
     "level": "low",
-    "reason": "fewer than 30 qualifying commits in the window, and fewer than 20 source files reach 10 revisions"
+    "reason": "fewer than 30 qualifying commits in the window, and fewer than 25 source files reach 10 revisions"
   },
-  "generatedAt": "2026-09-24T21:50:53.324Z",
+  "generatedAt": "2026-09-30T20:06:57.450Z",
   "generatedFrom": {
-    "commit": "2b8956a28e5aab28a09a61df32ff824f9bcc3b5c"
+    "commit": "2de16f4047c997265d57ffd59c02e3725a8a472f"
   },
   "pairs": [],
   "parameters": {
-    "appliedChangesetLimit": 14,
+    "appliedChangesetLimit": 15.25,
     "changeset": 50,
     "changesetFraction": 0.25,
     "cohesionDrop": 0.2,
@@ -280,16 +195,16 @@
     "floor": "fallen",
     "floorHeld": false,
     "floorTrigger": "both",
-    "headDate": "2026-09-17T18:33:38-07:00",
-    "inScopeFiles": 56,
+    "headDate": "2026-09-24T15:00:17-07:00",
+    "inScopeFiles": 61,
     "pinnedStart": null,
-    "priorFloor": null,
-    "qualifyingCommits": 5,
+    "priorFloor": "fallen",
+    "qualifyingCommits": 4,
     "qualifyingMinimum": 30,
     "revisions": 5,
     "shared": 10,
     "sharedFloorUsed": 3,
-    "since": "2026-03-22T01:33:38.000Z",
+    "since": "2026-03-28T22:00:17.000Z",
     "sourceExtensions": [
       ".js",
       ".mjs",
