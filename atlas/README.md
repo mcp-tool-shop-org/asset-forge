@@ -1,20 +1,19 @@
 # asset-forge: how it works
 
-Mapped at 2026-09-30 from commit 2de16f4 by Atlas 1.24.0.
+Mapped at 2026-10-01 from commit 1077bc0 by Atlas 1.24.0.
 
 ## What this is
 
 7 parts, mostly Rust (32 files), CSS (2), TypeScript (2), Astro (1) and JavaScript (1). Work enters through 2 doors; the busiest is CI, which reaches 4 parts.
 
-## What changed since 2026-09-24 (2b8956a)
+## What changed since 2026-09-30 (2de16f4)
 
-- export_all (crates/ship-export/Cargo.toml) is a new command. It runs crates/ship-export/examples/export_all.rs.
-- output is now written by crates/ship-export/examples/export_all.rs.
+- CI's pull request trigger no longer names `.github/workflows/**`, `Cargo.lock`, `Cargo.toml`, `atlas/**`, `crates/**`, `site/astro.config.mjs`, `site/package-lock.json` and `site/package.json`.
 - 1 file changed content, across 1 part.
 
 ## What comes in
 
-1. **CI.** On a pull request to main touching 8 paths; on a push to main touching 8 paths; or by hand. Runs crates/ship-export/src/gltf.rs, crates/ship-hull/src/caps.rs, crates/ship-hull/src/curves.rs and 15 more; checks crates/ship-export/src/lib.rs, crates/ship-hull/src/lib.rs, crates/ship-schema/src/lib.rs and 1 more.
+1. **CI.** On a pull request to main; on a push to main touching 8 paths; or by hand. Runs crates/ship-export/src/gltf.rs, crates/ship-hull/src/caps.rs, crates/ship-hull/src/curves.rs and 15 more; checks crates/ship-export/src/lib.rs, crates/ship-hull/src/lib.rs, crates/ship-schema/src/lib.rs and 1 more.
 2. **export_all** (a command people run with `cargo run --example export_all`). Runs crates/ship-export/examples/export_all.rs.
 
 ## What happens through CI
