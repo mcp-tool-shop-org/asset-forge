@@ -42,37 +42,30 @@
   "changes": {
     "fileCounts": {
       "added": 0,
-      "changed": 1,
+      "changed": 2,
       "moved": 0,
-      "parts": 1,
+      "parts": 2,
       "removed": 0
     },
     "items": [
       {
-        "kind": "door",
-        "sentence": "CI's pull request trigger no longer names `.github/workflows/**`, `Cargo.lock`, `Cargo.toml`, `atlas/**`, `crates/**`, `site/astro.config.mjs`, `site/package-lock.json` and `site/package.json`.",
-        "subjects": [
-          ".github/workflows/ci.yml"
-        ]
-      },
-      {
         "kind": "counts",
-        "sentence": "1 file changed content, across 1 part.",
+        "sentence": "Nothing structural changed since 2026-10-01; 2 files changed content.",
         "subjects": []
       }
     ],
     "since": {
-      "commit": "2de16f4047c997265d57ffd59c02e3725a8a472f",
-      "generatedAt": "2026-09-30T20:06:57.450Z"
+      "commit": "1077bc0230450b89e41ea08751edc0e9f542a1c7",
+      "generatedAt": "2026-10-01T02:14:08.725Z"
     },
-    "unchanged": false
+    "unchanged": true
   },
   "changesTogether": [],
   "changesTogetherNote": [
     "Window: 180 days; a pair counts from 3 shared commits, since the window holds fewer than 30 qualifying commits."
   ],
   "changesTogetherWithTests": 0,
-  "commit": "1077bc0230450b89e41ea08751edc0e9f542a1c7",
+  "commit": "ca8d9cf8193ebdfe76d542a6294bb8a78ebbc063",
   "defaultBranch": "main",
   "derived": "7 parts, mostly Rust (32 files), CSS (2), TypeScript (2), Astro (1) and JavaScript (1). Work enters through 2 doors; the busiest is CI, which reaches 4 parts.",
   "doors": [
@@ -202,9 +195,9 @@
       "to": "ship-schema"
     }
   ],
-  "engine": "1.24.0",
+  "engine": "1.26.0",
   "generated": [],
-  "generatedAt": "2026-10-01T02:14:08.725Z",
+  "generatedAt": "2026-11-11T22:07:53.592Z",
   "limits": [
     "1 write goes to places this repository does not track, so it is not listed as generated.",
     "Statistics confidence is low: fewer than 30 qualifying commits in the window, and fewer than 25 source files reach 10 revisions."
@@ -242,6 +235,7 @@
     "ship-schema": 5,
     "ship-testkit": 1
   },
+  "testedCodeParts": 4,
   "unnamedWrites": 0,
   "unread": [],
   "unreadFiles": 0,
