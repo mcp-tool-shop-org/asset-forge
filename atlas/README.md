@@ -1,15 +1,14 @@
 # asset-forge: how it works
 
-Mapped at 2026-10-01 from commit 1077bc0 by Atlas 1.24.0.
+Mapped at 2026-11-11 from commit ca8d9cf by Atlas 1.26.0.
 
 ## What this is
 
 7 parts, mostly Rust (32 files), CSS (2), TypeScript (2), Astro (1) and JavaScript (1). Work enters through 2 doors; the busiest is CI, which reaches 4 parts.
 
-## What changed since 2026-09-30 (2de16f4)
+## What changed since 2026-10-01 (1077bc0)
 
-- CI's pull request trigger no longer names `.github/workflows/**`, `Cargo.lock`, `Cargo.toml`, `atlas/**`, `crates/**`, `site/astro.config.mjs`, `site/package-lock.json` and `site/package.json`.
-- 1 file changed content, across 1 part.
+Nothing structural changed since 2026-10-01; 2 files changed content.
 
 ## What comes in
 
